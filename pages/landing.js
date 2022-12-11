@@ -34,7 +34,7 @@ export default function LandingPage(props) {
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="NextJS Material Kit"
+        brand="Safari CRM"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -58,12 +58,12 @@ export default function LandingPage(props) {
               <Button
                 color="danger"
                 size="lg"
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
+                href="/login"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fas fa-play" />
-                Watch video
+                <i className="fas fa-login" />
+                Log In
               </Button>
             </GridItem>
           </GridContainer>
@@ -72,8 +72,8 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />
-          <TeamSection />
-          <WorkSection />
+          {/* <TeamSection />
+          <WorkSection /> */}
         </div>
       </div>
       <Footer />

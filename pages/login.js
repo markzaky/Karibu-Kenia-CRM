@@ -18,6 +18,7 @@ import CardBody from "/components/Card/CardBody.js";
 import CardHeader from "/components/Card/CardHeader.js";
 import CardFooter from "/components/Card/CardFooter.js";
 import CustomInput from "/components/CustomInput/CustomInput.js";
+import { provider } from '../config/firebase_lib'
 
 import styles from "/styles/jss/nextjs-material-kit/pages/loginPage.js";
 
@@ -28,6 +29,13 @@ export default function LoginPage(props) {
   setTimeout(function () {
     setCardAnimation("");
   }, 700);
+  const [credentials, setCredentials] = React.useState({email:"",pass:""})
+  const handleChange = (e, name) => {
+    setformData((prevState) => ({ ...prevState, [name]: e.target.value }));
+  }
+  const signIn = () =>{
+    console.log(credentials)
+  }
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -35,7 +43,7 @@ export default function LoginPage(props) {
       <Header
         absolute
         color="transparent"
-        brand="NextJS Material Kit"
+        brand="Karibu Kenia"
         rightLinks={<HeaderLinks />}
         {...rest}
       />
@@ -55,7 +63,7 @@ export default function LoginPage(props) {
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
                     <div className={classes.socialLine}>
-                      <Button
+                      {/* <Button
                         justIcon
                         href="#pablo"
                         target="_blank"
@@ -72,7 +80,7 @@ export default function LoginPage(props) {
                         onClick={(e) => e.preventDefault()}
                       >
                         <i className={"fab fa-facebook"} />
-                      </Button>
+                      </Button> */}
                       <Button
                         justIcon
                         href="#pablo"
@@ -107,6 +115,8 @@ export default function LoginPage(props) {
                       formControlProps={{
                         fullWidth: true
                       }}
+                      name = 'email'
+                      onChange ={(e) => handleChange(e, 'email')}
                       inputProps={{
                         type: "email",
                         endAdornment: (
@@ -122,6 +132,8 @@ export default function LoginPage(props) {
                       formControlProps={{
                         fullWidth: true
                       }}
+                      name = 'pass'
+                      onChange ={(e) => handleChange(e, 'pass')}
                       inputProps={{
                         type: "password",
                         endAdornment: (
@@ -136,8 +148,11 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
-                      Get started
+                    <Button 
+                    simple color="primary" size="lg"
+                    onClick = {signIn}
+                    >
+                      Sign In
                     </Button>
                   </CardFooter>
                 </form>
