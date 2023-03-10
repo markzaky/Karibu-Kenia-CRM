@@ -1,0 +1,44 @@
+import Header from "/components/Header/Header.js";
+import Footer from "/components/Footer/Footer.js";
+import DashboadLinks from "/components/Header/DashboadLinks.js";
+import { makeStyles } from "@material-ui/core/styles";
+// fetching data from google sheets
+import { getHotels } from '../libs/sheets';
+import styles from "/styles/jss/nextjs-material-kit/pages/profilePage.js";
+
+import ClientDetails from "../pages-sections/Budget-Sections/ClientDetails"
+const useStyles = makeStyles(styles);
+
+export default function ProfilePage(props) {
+    const classes = useStyles();
+    const { ...rest } = props;
+    // console.log(props.hotel_data);  
+    return(
+        <div>
+        <Header
+        color="primary"
+        brand="Karibu Kenia"
+        rightLinks={<DashboadLinks />}
+        fixed
+        changeColorOnScroll={{
+          height: 200,
+          color: "white"
+        }}
+        {...rest}
+        />
+        <ClientDetails { ...rest } />
+
+        </div> 
+    )
+}
+export async function getStaticProps(context) {
+  const hotel = await getHotels();
+  console.log(hotel); 
+  return {
+    props: {
+      message: `Next.js is awesomeeeeee`,
+      hotel_data: hotel, 
+    },
+    revalidate: 1,
+  };
+}

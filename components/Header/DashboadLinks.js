@@ -52,9 +52,9 @@ export default function DashboadLinks(props) {
       </ListItem> */}
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
+          href="/budget"
           color="transparent"
-          target="_blank"
+          // target="_blank"
           className={classes.navLink}
         >
           <Icon className={classes.icons}>unarchive</Icon> Craete Budget
@@ -62,7 +62,7 @@ export default function DashboadLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit?ref=njsmk-navbar"
+          href="/hotels"
           color="transparent"
           target="_blank"
           className={classes.navLink}
